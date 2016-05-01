@@ -1,4 +1,4 @@
-package task02;
+package radix;
 
 public class RadixConvertion {
 
