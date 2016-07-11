@@ -3,7 +3,8 @@ package solver;
 public class ParallelChord {
 
 	public static void main(String[] args) {
-		solve(5.0, 1.0e-8, 200, true);
+		solve(5.0, 1.0e-8, 20, true);
+		solve(5.0, 1.0e-8, 20, false);
 	}
 	
 	public static double solve(double x0, double eps, int n, boolean flag) {

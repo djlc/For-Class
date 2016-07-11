@@ -9,6 +9,7 @@ public class Newton {
 		solve(5.0, 1.0e-10, 50, true);
 	}
 	
+	// flag : true -> 相対誤差, false -> 残差
 	public static double solve(double x0, double eps, int n, boolean flag) {
 		double xk = x0, xk1 = 0.0, error = 0.0;
 		int it = 0;

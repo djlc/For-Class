@@ -16,6 +16,7 @@ public class RadixConvertion2 {
 		System.out.println(radix(a,b,8));
 	}
 	
+	// index進 -> 10進
 	public static double radix(int[] a, int[] b, int index) {
 		double temp1 = 0, temp2 = 0;
 		// 整数部分
