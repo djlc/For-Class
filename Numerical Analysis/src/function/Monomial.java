@@ -70,16 +70,12 @@ public class Monomial {
 		this.c.add(c);
 	}
 	
-	boolean isTypeEquals(Monomial m) {
-		return false;
-	}
-	
 	public Monomial clone() {
 		return new Monomial(this);
 	}
 	
 	// f(x)g(x) = f'(x)g(x) + f(x)g'(x)
-	ArrayList<Monomial> D(String var) {
+	public ArrayList<Monomial> D(String var) {
 		ArrayList<Monomial> p = new ArrayList<Monomial>();
 		for (int i=0; i<this.f.size(); i++) {
 			if (f.get(i).name == var) {
@@ -91,5 +87,14 @@ public class Monomial {
 			}
 		}
 		return p;
+	}
+	
+	// 関数の種類が一致するかどうか
+	public boolean isTypeEquals(Monomial m) {
+		if (f.size() != m.f.size()) return false;
+		for (int i=0; i<f.size(); i++) {
+			if (!m.f.get(i).name.equals(f.get(i))) return false;
+		}
+		return true;
 	}
 }

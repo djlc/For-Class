@@ -13,9 +13,12 @@ public class Main {
 				new Monomial(3, new Power[] { new Power("x", 4), new Power("y", 4), new Power("z", 4) })
 			}
 		);
-		System.out.print("f    = "); p.print();
-		Polynomial q = p.set("x", new Z(2));// p.set("y", new Z(3));
-		p.print(); q.print();
+		System.out.print("f(x,y,z) = "); p.print();
+		
+		p.set("x", new Z(2));
+		p.set("y", new Z(3));
+		p.set("z", new Z(1));
+		p.print();
 	}
 
 }

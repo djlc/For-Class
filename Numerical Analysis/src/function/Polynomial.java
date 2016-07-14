@@ -35,15 +35,14 @@ public class Polynomial {
 		
 	}
 	
-	public Polynomial D(String var) {
+	public void D(String var) {
 		ArrayList<Monomial> temp = new ArrayList<Monomial>(p.size());
 		for (int i=0; i<p.size(); i++) {
 			temp.addAll(p.get(i).D(var));
 		}
-		return new Polynomial(temp);
 	}
 	
-	public Polynomial set(String var, MathVar value) {
+	public void set(String var, MathVar value) {
 		ArrayList<Monomial> q = new ArrayList<Monomial>(p);
 		for (int i=0; i<q.size(); i++) {
 			for (int j=0; j<q.get(i).f.size(); j++) {
@@ -53,7 +52,6 @@ public class Polynomial {
 				}
 			}
 		}
-		return new Polynomial(q);
 	}
 
 	public R getValue() {
@@ -72,5 +70,10 @@ public class Polynomial {
 			sum.add(temp);
 		}
 		return sum;
+	}
+	
+	// 多項式の縮約
+	private void shrink() {
+		
 	}
 }
