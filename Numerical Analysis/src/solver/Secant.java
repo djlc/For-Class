@@ -1,27 +1,44 @@
 package solver;
 
-public class Secant {
+public abstract class Secant extends Newton {
 
-	public static void main(String[] args) {
-		solve(-5.0, -4.0, 1.0E-10, 50, true);
-		solve(5.0, 6.0, 1.0E-10, 50, true);
+	// temp
+	private double xk, xk1, xk2;
+
+	@Override @Deprecated
+	public double df(double x) {
+		return 0;
 	}
-	
-	public static double solve(double x0, double x1, double eps, int n, boolean flag) {
-		double xk = x0, xk1 = x1, xk2 = 0.0, error = 0.0;
-		int it = 0;
-		
-		for (it = 0; it < n; it++) {
-			xk2 = xk1 - Solve.f(xk1) * (xk1 - xk) / (Solve.f(xk1) - Solve.f(xk));
-			error = (flag) ? Solve.relativeError(xk1, xk2) : Solve.residualError(xk2);
-			if (error < eps) {
-				break;
-			} else {
-				xk = xk1;
-				xk1 = xk2;
-			}
+
+	@Override @Deprecated
+	public double iterFunc(double xk) {
+		return 0;
+	}
+
+	@Override
+	public double iterFunc(double xk, double xk1) {
+		++cnt;
+		return xk1 - f(xk1) * (xk1 - xk) / (f(xk1) - f(xk));
+	}
+
+	@Override
+	public boolean stop() {
+		return (Math.abs(f(xk2)) < 1.0E-12);
+	}
+
+	@Override @Deprecated
+	public void solve(double x0) {
+		return;
+	}
+
+	@Override
+	public void solve(double x0, double x1) {
+		xk = x0; xk1 = x1; xk2 = x0;
+		while(!stop()) {
+			xk2 = iterFunc(xk, xk1);
+			System.out.printf("N = %03d, x = %.16f%n", cnt, xk2);
+			xk = xk1; xk1 = xk2;
 		}
-		System.out.printf("it = %03d, x = %.16f, e = %.2e%n", it, xk2, Math.min(Math.abs(-2.0*Math.PI-xk2), Math.abs(2.0*Math.PI-xk2)));
-		return xk2;
+		apx = xk2;
 	}
 }
