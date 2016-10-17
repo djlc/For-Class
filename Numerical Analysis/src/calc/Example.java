@@ -4,20 +4,15 @@ public class Example {
 
 	public static void main(String[] args) {
 		double[][] A = {
-				{1,5,3},
-				{0,6,3},
-				{4,6,2}
+				{1, -2, 3},
+				{3, 1, -5},
+				{-2, 6, -9},
 		};
-		double[][] B = {
-				{1,0,0},
-				{0,1,0},
-				{0,0,2}
-		};
-		double[] x = {1, 0, 0};
 		
-		Calc.printMat(Calc.multipleMat(A, B));
-		Calc.printVec(Calc.matVec(A, x));
-		System.out.printf("||A||_1 = %f, ||A||_inf = %f", Calc.matNorm1(A), Calc.matNormInf(A));
+		double[] b = { 1, -4, -2 };
+		
+		Calc.printVec(GaussianElimination.solve(A, b));
+		Calc.printVec(GaussianEliminationPivot.solve(A, b));;
 	}
 
 }
