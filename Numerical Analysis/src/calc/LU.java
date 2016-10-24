@@ -50,4 +50,36 @@ public class LU {
 
 		return vecb;
 	}
+	
+	// 逆行列を求める
+	public static double[][] inverse(double[][] A) {
+		double[][] matA = new double[A.length][A[0].length];
+		for (int i = 0; i < matA.length; i++) {
+			matA[i] = A[i].clone();
+		}
+		
+		// LU分解する
+		LUDiv(matA);
+		
+		double[][] X = new double[A.length][A[0].length];
+		
+		for (int i = 0; i < A.length; i++) {
+			// L y_i = e_i (前進代入)
+			for (int k = 0; k < A.length; k++) {
+				X[k][i] = (k == i) ? 1.0 : 0.0;
+				for (int j = 0; j < k; j++) {
+					X[k][i] -= matA[k][j] * X[j][i];
+				}
+			}
+			// L x_i = y_i (後退代入)
+			for (int k = A.length - 1; k >= 0; k--) {
+				for (int j = k+1; j < A.length; j++) {
+					X[k][i] -= matA[k][j] * X[j][i];
+				}
+				X[k][i] /= matA[k][k];
+			}
+		}
+		
+		return X;
+	}
 }

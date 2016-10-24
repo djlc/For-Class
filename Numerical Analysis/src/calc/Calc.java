@@ -28,6 +28,11 @@ public class Calc {
 		}
 	}
 
+	// クロネッカーのデルタ
+	public static int kDelta(int i, int j) {
+		return (i == j) ? 1 : 0;
+	}
+
 	// ベクトルxをスカラーc倍する
 	public static double[] scalarMultiple(double c, double x[]) {
 		for (int i = 0; i < x.length; i++)
