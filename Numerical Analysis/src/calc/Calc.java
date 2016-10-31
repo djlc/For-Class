@@ -169,4 +169,9 @@ public class Calc {
 		}
 		return c;
 	}
+	
+	// 条件数
+	public static double cond(double[][] A) {
+		return matNormInf(A) * matNormInf(LU.inverse(A));
+	}
 }
