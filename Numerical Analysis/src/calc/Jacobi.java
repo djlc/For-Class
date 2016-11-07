@@ -91,13 +91,13 @@ public class Jacobi {
 		if (mode == MODE.ABS_RES && norm == NORM.INF) {
 			return Calc.vecNormInf(Calc.residual(A, x1, b));
 		}
-		if (mode == MODE.ABS_RES && norm == NORM.ONE) {
+		if (mode == MODE.REL_RES && norm == NORM.ONE) {
 			return Calc.vecNorm1(Calc.residual(A, x1, b)) / Calc.vecNorm1(b);
 		}
-		if (mode == MODE.ABS_RES && norm == NORM.TWO) {
+		if (mode == MODE.REL_RES && norm == NORM.TWO) {
 			return Calc.vecNorm2(Calc.residual(A, x1, b)) / Calc.vecNorm2(b);
 		}
-		if (mode == MODE.ABS_RES && norm == NORM.INF) {
+		if (mode == MODE.REL_RES && norm == NORM.INF) {
 			return Calc.vecNormInf(Calc.residual(A, x1, b)) / Calc.vecNormInf(b);
 		}
 
