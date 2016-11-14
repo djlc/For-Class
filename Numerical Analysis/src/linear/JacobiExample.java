@@ -1,7 +1,4 @@
-package calc;
-
-import calc.Jacobi.MODE;
-import calc.Jacobi.NORM;
+package linear;
 
 public class JacobiExample {
 	public static void main(String[] args) {

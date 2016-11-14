@@ -1,4 +1,4 @@
-package calc;
+package linear;
 
 public class Calc {
 
@@ -20,7 +20,7 @@ public class Calc {
 		for (int i = 0; i < A.length; i++) {
 			System.out.print("|");
 			for (int j = 0; j < A[i].length; j++) {
-				System.out.printf("%23.16e", A[i][j]);
+				System.out.printf("%10.3e", A[i][j]);
 				if (j != A[i].length - 1)
 					System.out.print(" ");
 			}
@@ -169,7 +169,48 @@ public class Calc {
 		}
 		return c;
 	}
-	
+
+	// 残差, 誤差に関するベクトルノルムの取得(引数雑すぎるけど)
+	public static double getVecNorm(double[] x0, double[] x1, double[][] A, double[] b, MODE mode, NORM norm) {
+		if (mode == MODE.ABS_ERR && norm == NORM.ONE) {
+			return Calc.vecNorm1(Calc.subVec(x0, x1));
+		}
+		if (mode == MODE.ABS_ERR && norm == NORM.TWO) {
+			return Calc.vecNorm2(Calc.subVec(x0, x1));
+		}
+		if (mode == MODE.ABS_ERR && norm == NORM.INF) {
+			return Calc.vecNormInf(Calc.subVec(x0, x1));
+		}
+		if (mode == MODE.REL_ERR && norm == NORM.ONE) {
+			return Calc.vecNorm1(Calc.subVec(x0, x1)) / Calc.vecNorm1(x1);
+		}
+		if (mode == MODE.REL_ERR && norm == NORM.TWO) {
+			return Calc.vecNorm2(Calc.subVec(x0, x1)) / Calc.vecNorm2(x1);
+		}
+		if (mode == MODE.REL_ERR && norm == NORM.INF) {
+			return Calc.vecNormInf(Calc.subVec(x0, x1)) / Calc.vecNormInf(x1);
+		}
+		if (mode == MODE.ABS_RES && norm == NORM.ONE) {
+			return Calc.vecNorm1(Calc.residual(A, x1, b));
+		}
+		if (mode == MODE.ABS_RES && norm == NORM.TWO) {
+			return Calc.vecNorm2(Calc.residual(A, x1, b));
+		}
+		if (mode == MODE.ABS_RES && norm == NORM.INF) {
+			return Calc.vecNormInf(Calc.residual(A, x1, b));
+		}
+		if (mode == MODE.REL_RES && norm == NORM.ONE) {
+			return Calc.vecNorm1(Calc.residual(A, x1, b)) / Calc.vecNorm1(b);
+		}
+		if (mode == MODE.REL_RES && norm == NORM.TWO) {
+			return Calc.vecNorm2(Calc.residual(A, x1, b)) / Calc.vecNorm2(b);
+		}
+		if (mode == MODE.REL_RES && norm == NORM.INF) {
+			return Calc.vecNormInf(Calc.residual(A, x1, b)) / Calc.vecNormInf(b);
+		}
+		return 0;
+	}
+
 	// 条件数
 	public static double cond(double[][] A) {
 		return matNormInf(A) * matNormInf(LU.inverse(A));

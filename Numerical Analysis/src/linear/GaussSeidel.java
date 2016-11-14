@@ -1,6 +1,6 @@
-package calc;
+package linear;
 
-public class Jacobi {
+public class GaussSeidel {
 	// 係数行列
 	double[][] A;
 	// 係数ベクトル
@@ -8,22 +8,9 @@ public class Jacobi {
 	
 	// 近似解を求めるためのベクトル列
 	double[] x0, x1;
-
-	// 収束判定
-	public enum MODE {
-		ABS_ERR, // 絶対誤差 
-		ABS_RES, // 絶対残差
-		REL_ERR, // 相対誤差
-		REL_RES  // 相対残差
-	}
-	
-	// 収束判定で使用するノルム
-	public enum NORM {
-		ONE, TWO, INF
-	}
 	
 	// コンストラクタ
-	public Jacobi(double[][] A, double[] b) {
+	public GaussSeidel(double[][] A, double[] b) {
 		this.A = new double[A.length][A.length];
 		this.b = new double[A.length];
 		this.x0 = new double[A.length];
@@ -45,14 +32,16 @@ public class Jacobi {
 			for (int i = 0; i < A.length; i++) {
 				x1[i] = b[i];
 				for (int j = 0; j < A.length; j++) {
-					if (i != j) {
-						x1[i] -= A[i][j] * this.x0[j];
+					if (j < i) {
+						x1[i] -= A[i][j] * x1[j];
+					} else if (j > i) {
+						x1[i] -= A[i][j] * this.x0[j]; 
 					}
 				}
 				x1[i] /= A[i][i];
 			}
 			
-			if (getNorm(mode, norm) < eps) {
+			if (Calc.getVecNorm(this.x0, x1, A, b, mode, norm) < eps) {
 				System.out.println(m);
 				break;
 			}

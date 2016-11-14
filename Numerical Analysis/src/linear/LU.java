@@ -1,9 +1,9 @@
-package calc;
+package linear;
 
 public class LU {
 
 	// LU分解
-	private static void LUDiv(double[][] A) {
+	public static void LUDiv(double[][] A) {
 		for (int k = 0; k < A.length - 1; k++) {
 			for (int i = k + 1; i < A.length; i++) {
 				A[i][k] /= A[k][k];

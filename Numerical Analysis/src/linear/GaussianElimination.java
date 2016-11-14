@@ -1,6 +1,6 @@
-package calc;
+package linear;
 
-public class GaussianEliminationPivot {
+public class GaussianElimination {
 	
 	public static double[] solve(double A[][], double b[]) {
 		double[][] matA = new double[A.length][A[0].length];
@@ -8,34 +8,16 @@ public class GaussianEliminationPivot {
 			matA[i] = A[i].clone();
 		}
 		double[] vecb = b.clone();
+		double alpha = 0.0;
 		
 		// 前進消去
 		for (int k = 0; k < A.length - 1; k++) {
 			for (int i = k + 1; i < A.length; i++) {
-
-				// pivot選択
-				int l = k + 1;
-				for (int t = k; t < A.length; t++) {
-					if (Math.abs(matA[t][k]) > Math.abs(matA[l][k])) {
-						l = t;
-					}
-				}
-
-				// 行の入れ替え
-				double temp = 0;
-				for (int s = k; s < A.length; s++) {
-					temp = matA[l][s];
-					matA[l][s] = matA[k][s];
-					matA[k][s] = temp;
-				}
-				temp = vecb[l];
-				vecb[l] = vecb[k];
-				vecb[k] = temp;
-				
+				alpha = matA[i][k] / matA[k][k];
 				for (int j = k + 1; j < A[0].length; j++) {
-					matA[i][j] -= matA[i][k] / matA[k][k] * matA[k][j];
+					matA[i][j] -= alpha * matA[k][j];
 				}
-				vecb[i] -= matA[i][k] / matA[k][k] * vecb[k];
+				vecb[i] -= alpha * vecb[k];
 			}
 		}
 
