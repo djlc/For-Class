@@ -43,10 +43,10 @@ public class SOR {
 			}
 			
 			if (Calc.getVecNorm(this.x0, x1, A, b, mode, norm) < eps) {
-				System.out.println(m);
+				System.out.printf("omega = %.2f, N = %d%n", omega, m);
 				break;
 			}
-			if (m == N) System.out.println("収束しない");
+			if (m == N) System.out.printf("omega = %.2f, 収束しない%n", omega);
 			
 			this.x0 = x1.clone();
 		}
