@@ -143,6 +143,15 @@ public class Calc {
 		}
 		return c;
 	}
+	
+	// ベクトルのpノルム
+	public static double vecNorm(double[] x, double p) {
+		double c = 0.0;
+		for (int i = 0; i < x.length; i++) {
+			c += Math.pow(Math.abs(x[i]), p);
+		}
+		return Math.pow(c, 1/p);
+	}
 
 	// 行列の1ノルム
 	public static double matNorm1(double[][] A) {
