@@ -51,6 +51,22 @@ public class LU {
 		return vecb;
 	}
 	
+	// 行列式を求める
+	public static double det(double[][] A) {
+		double d = 1.0;
+		double[][] matA = new double[A.length][A[0].length];
+		for (int i = 0; i < matA.length; i++) {
+			matA[i] = A[i].clone();
+		}
+
+		LUDiv(matA);
+		for (int i = 0; i < matA.length; i++) {
+			d *= matA[i][i];
+		}
+
+		return d;
+	}
+	
 	// 逆行列を求める
 	public static double[][] inverse(double[][] A) {
 		double[][] matA = new double[A.length][A[0].length];
