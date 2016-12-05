@@ -27,6 +27,11 @@ public class Calc {
 			System.out.println("|");
 		}
 	}
+	
+	// 有効桁数3桁での指数表示出力
+	public static void printE(double x) {
+		System.out.printf("%.2e%n", x);
+	}
 
 	// クロネッカーのデルタ
 	public static int kDelta(int i, int j) {
@@ -153,7 +158,7 @@ public class Calc {
 		return Math.pow(c, 1/p);
 	}
 
-	// 行列の1ノルム
+	// 行列の1ノルム(列和)
 	public static double matNorm1(double[][] A) {
 		double c = 0.0;
 		for (int i = 0; i < A[0].length; i++) {
@@ -166,7 +171,7 @@ public class Calc {
 		return c;
 	}
 
-	// 行列の∞ノルム
+	// 行列の∞ノルム(行和)
 	public static double matNormInf(double[][] A) {
 		double c = 0.0;
 		for (int i = 0; i < A.length; i++) {
@@ -177,6 +182,15 @@ public class Calc {
 				c = d;
 		}
 		return c;
+	}
+	
+	// 行列のトレース
+	public static double trace(double[][] A) {
+		double t = 0.0;
+		for (int i = 0; i < A.length; i++) {
+			t += A[i][i];
+		}
+		return t;
 	}
 
 	// 残差, 誤差に関するベクトルノルムの取得(引数雑すぎるけど)

@@ -2,12 +2,12 @@ package linear;
 
 public class SOR {
 	// 係数行列
-	double[][] A;
+	public double[][] A;
 	// 係数ベクトル
-	double[] b;
+	public double[] b;
 	
 	// 近似解を求めるためのベクトル列
-	double[] x0, x1;
+	public double[] x0, x1;
 	
 	// コンストラクタ
 	public SOR(double[][] A, double[] b) {
@@ -51,46 +51,5 @@ public class SOR {
 			this.x0 = x1.clone();
 		}
 		return x1;
-	}
-
-	private double getNorm(MODE mode, NORM norm) {
-		if (mode == MODE.ABS_ERR && norm == NORM.ONE) {
-			return Calc.vecNorm1(Calc.subVec(x0, x1));
-		}
-		if (mode == MODE.ABS_ERR && norm == NORM.TWO) {
-			return Calc.vecNorm2(Calc.subVec(x0, x1));
-		}
-		if (mode == MODE.ABS_ERR && norm == NORM.INF) {
-			return Calc.vecNormInf(Calc.subVec(x0, x1));
-		}
-		if (mode == MODE.REL_ERR && norm == NORM.ONE) {
-			return Calc.vecNorm1(Calc.subVec(x0, x1)) / Calc.vecNorm1(x1);
-		}
-		if (mode == MODE.REL_ERR && norm == NORM.TWO) {
-			return Calc.vecNorm2(Calc.subVec(x0, x1)) / Calc.vecNorm2(x1);
-		}
-		if (mode == MODE.REL_ERR && norm == NORM.INF) {
-			return Calc.vecNormInf(Calc.subVec(x0, x1)) / Calc.vecNormInf(x1);
-		}
-		if (mode == MODE.ABS_RES && norm == NORM.ONE) {
-			return Calc.vecNorm1(Calc.residual(A, x1, b));
-		}
-		if (mode == MODE.ABS_RES && norm == NORM.TWO) {
-			return Calc.vecNorm2(Calc.residual(A, x1, b));
-		}
-		if (mode == MODE.ABS_RES && norm == NORM.INF) {
-			return Calc.vecNormInf(Calc.residual(A, x1, b));
-		}
-		if (mode == MODE.REL_RES && norm == NORM.ONE) {
-			return Calc.vecNorm1(Calc.residual(A, x1, b)) / Calc.vecNorm1(b);
-		}
-		if (mode == MODE.REL_RES && norm == NORM.TWO) {
-			return Calc.vecNorm2(Calc.residual(A, x1, b)) / Calc.vecNorm2(b);
-		}
-		if (mode == MODE.REL_RES && norm == NORM.INF) {
-			return Calc.vecNormInf(Calc.residual(A, x1, b)) / Calc.vecNormInf(b);
-		}
-
-		return 0;
 	}
 }
