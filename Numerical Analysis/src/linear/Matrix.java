@@ -34,6 +34,17 @@ public class Matrix {
 		return D;
 	}
 	
+	// 乱数行列の作成(各成分の値の範囲は[0,1])
+	public static double[][] RandomMatrix(int n, int m) {
+		double[][] R = new double[n][m];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				R[i][j] = Math.random();
+			}
+		}
+		return R;
+	}
+	
 	// 三重対角行列の作成
 	public static double[][] TripleDiagonalMatrix(double a, double b, double c, int n) {
 		double[][] D = new double[n][n];
