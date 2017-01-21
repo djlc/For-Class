@@ -1,12 +1,12 @@
 package exam._2016;
 
-import linear.Calc;
 import linear.GaussSeidel;
 import linear.Jacobi;
 import linear.LU;
-import linear.MODE;
-import linear.NORM;
 import linear.SOR;
+import util.Calc;
+import util.MODE;
+import util.NORM;
 
 public class Problem5 {
 

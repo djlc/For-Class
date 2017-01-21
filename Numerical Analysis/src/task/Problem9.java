@@ -1,6 +1,6 @@
 package task;
 
-import linear.Calc;
+import util.Calc;
 
 public class Problem9 {
 

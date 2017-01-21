@@ -1,5 +1,9 @@
 package linear;
 
+import util.Calc;
+import util.MODE;
+import util.NORM;
+
 public class GaussSeidelExample {
 	public static void main(String[] args) {
 		double[][] A = {

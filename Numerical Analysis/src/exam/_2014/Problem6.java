@@ -1,7 +1,7 @@
 package exam._2014;
 
 import linear.LU;
-import linear.Matrix;
+import util.Matrix;
 
 public class Problem6 {
 

@@ -1,8 +1,8 @@
 package exam._2014;
 
-import linear.Calc;
 import linear.GaussianElimination;
 import linear.GaussianEliminationPivot;
+import util.Calc;
 
 public class Problem2 {
 

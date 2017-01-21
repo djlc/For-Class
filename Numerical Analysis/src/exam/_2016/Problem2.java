@@ -1,7 +1,7 @@
 package exam._2016;
 
-import linear.Calc;
 import linear.LU;
+import util.Calc;
 
 public class Problem2 {
 

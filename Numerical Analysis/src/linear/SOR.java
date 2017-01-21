@@ -1,5 +1,9 @@
 package linear;
 
+import util.Calc;
+import util.MODE;
+import util.NORM;
+
 public class SOR {
 	// 係数行列
 	public double[][] A;

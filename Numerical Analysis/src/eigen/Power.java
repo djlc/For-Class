@@ -1,4 +1,6 @@
-package linear;
+package eigen;
+
+import util.Calc;
 
 public class Power {
 

@@ -1,5 +1,9 @@
 package linear;
 
+import util.Calc;
+import util.MODE;
+import util.NORM;
+
 public class GaussSeidel {
 	// 係数行列
 	double[][] A;

@@ -1,4 +1,4 @@
-package linear;
+package util;
 
 public enum MODE {
 	ABS_ERR, // 絶対誤差

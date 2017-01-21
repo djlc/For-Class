@@ -1,8 +1,8 @@
 package task;
 
-import linear.Calc;
 import linear.GaussianElimination;
 import linear.GaussianEliminationPivot;
+import util.Calc;
 
 public class Problem8 {
 	public static void main(String[] args) {

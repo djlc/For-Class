@@ -1,11 +1,11 @@
 package exam._2014;
 
-import linear.Calc;
 import linear.Jacobi;
-import linear.MODE;
-import linear.Matrix;
-import linear.NORM;
 import linear.SOR;
+import util.Calc;
+import util.MODE;
+import util.Matrix;
+import util.NORM;
 
 public class Problem5 {
 

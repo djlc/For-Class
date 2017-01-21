@@ -1,5 +1,7 @@
 package linear;
 
+import util.Calc;
+
 public class LUExample {
 
 	public static void main(String[] args) {

@@ -1,8 +1,8 @@
 package exam._2016;
 
-import linear.Calc;
 import linear.GaussianElimination;
 import linear.LU;
+import util.Calc;
 
 public class Problem3 {
 

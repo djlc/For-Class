@@ -1,4 +1,4 @@
-package linear;
+package eigen;
 
 public class PowerExample {
 

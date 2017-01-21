@@ -1,7 +1,7 @@
 package task;
 
-import linear.Calc;
-import linear.Matrix;
+import util.Calc;
+import util.Matrix;
 
 public class SizeTest {
 

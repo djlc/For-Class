@@ -1,4 +1,6 @@
-package linear;
+package util;
+
+import linear.LU;
 
 public class Calc {
 

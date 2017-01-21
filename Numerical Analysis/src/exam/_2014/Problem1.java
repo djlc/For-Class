@@ -1,6 +1,6 @@
 package exam._2014;
 
-import linear.Calc;
+import util.Calc;
 
 public class Problem1 {
 

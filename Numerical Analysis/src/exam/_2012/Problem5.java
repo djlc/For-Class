@@ -2,8 +2,8 @@ package exam._2012;
 
 import linear.GaussSeidel;
 import linear.Jacobi;
-import linear.MODE;
-import linear.NORM;
+import util.MODE;
+import util.NORM;
 
 public class Problem5 {
 

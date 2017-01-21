@@ -1,10 +1,10 @@
 package differentialEquation;
 
-import linear.Calc;
 import linear.GaussianEliminationPivot;
-import linear.MODE;
-import linear.Matrix;
-import linear.NORM;
+import util.Calc;
+import util.MODE;
+import util.Matrix;
+import util.NORM;
 
 public class Example1 {
 
